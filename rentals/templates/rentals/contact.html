@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BT Rentals</title>
+<link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+<link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+<script src="{% static 'rentals/js/scripts.js' %}"></script>
+
+<body>
+    <!-- Header & Menu Combined -->
+<header class="header-menu-container">
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Browne Transports and Car Rentals</h1>
+        <h2>We have Reasonable and Reliable cars for every occasion.</h2>
+        <p>Get the keys to your next adventure!</p>
+    </div>
+
+    <!-- Menu Button on the Right -->
+    <div class="menu">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'fleet' %}">Our Fleet</a>
+            <a href="{% url 'menubookings' %}">Reservations</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+            <a href="{% url 'contact' %}">Contact & Socials</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+        </div>
+    </div>
+</header>
+</body>
+
+
+<!--Quick Contact Info-->
+<section id="contact-us">
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p>Have questions or need assistance? We're here to help!</p>
+        
+        <div class="contact-info">
+            <p><strong>📍 Address:</strong> 123 Main Street, Bridgetown, Barbados</p>
+            <p><strong>📞 Phone:</strong> +1 (246) 123-4567</p>
+            <p><strong>📧 Email:</strong> support@brownerentals.com</p>
+            <p><strong>⏰ Working Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</p>
+        </div>
+
+        <a href="mailto:support@brownerentals.com" class="contact-btn">Email Us</a>
+    </div>
+</section>
+
+
+
+<!--Footer-->
+<footer>
+    <br>
+    <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+    <br>
+</footer>

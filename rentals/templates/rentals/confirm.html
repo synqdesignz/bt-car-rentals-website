@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'rentals/css/confirm.css' %}">
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+
+</head>
+
+
+<body>
+    <!-- Header & Menu Combined -->
+    <header class="header-menu-container">
+        <!-- Header Content -->
+        <div class="header-content">
+            <h1>Browne Transports and Car Rentals</h1>
+            <h2>Reservations Summary</h2>
+        </div>
+
+        <!-- Menu Button on the Right -->
+        <div class="menu">
+            <button class="menu-button">☰ Menu</button>
+            <div class="dropdown">
+                <a href="{% url 'homepage' %}">Home</a>
+                <a href="{% url 'fleet' %}">Our Fleet</a>
+                <a href="{% url 'menubookings' %}">Reservations</a>
+                <a href="{% url 'terms' %}">Terms and Conditions</a>
+                <a href="{% url 'contact' %}">Contact & Socials</a>
+                <a href="{% url 'about' %}">About Us</a>
+                <a href="{% url 'faq' %}">FAQ</a>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="payment">
+        <div class="payment-container">
+            <h2>Rental Summary</h2>
+
+            <div class="payment-section">
+                <h3>Car Information:</h3>
+                <p><strong>Car Model:</strong> {{ car.model }}</p>
+                <p><strong>Price per day:</strong> ${{ car.price_day }}</p>
+            </div>
+
+            <div class="payment-section">
+                <h3>Customer Information:</h3>
+                <p><strong>Name:</strong> {{ customer.first_name }} {{ customer.last_name }}</p>
+                <p><strong>Email:</strong> {{ customer.email }}</p>
+                <p><strong>Contact:</strong> {{ customer.contact }}</p>
+            </div>
+
+            <div class="payment-section">
+                <h3>Add-ons:</h3>
+                {% if additions %}
+                <ul>
+                    {% for addition in additions %}
+                    <li>{{ addition.name }} (+${{ addition.price }} per day)</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No add-ons selected.</p>
+                {% endif %}
+            </div>
+
+
+            <div class="payment-section total-price">
+                <h3>Total Price: ${{ total_price }}</h3>
+            </div>
+
+            <!-- Disclaimer Agreement Section -->
+            <div class="payment-section">
+                <label>
+                    <input type="checkbox" name="terms_agreement" required>
+                    I have read and agree to the <a href="{% url 'terms' %}" target="_blank">terms and conditions</a>.
+                </label>
+            </div>
+
+            <form action="{% url 'confirm' booking.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Confirm Booking</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!--Footer-->
+    <footer>
+        <br>
+        <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+        <br>
+    </footer>

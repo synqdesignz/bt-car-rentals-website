@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals-Fleet</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/fleet.css' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+    <script src="{% static 'rentals/js/fleet.js' %}"></script>
+
+</head>
+
+<!-- Google Translate Dropdown 
+<div id="googletranslate"></div>
+-->
+<!-- Google Translate API 
+ <script>
+ function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de', // Customize supported languages
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'googletranslate');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+-->
+<body>
+    <!-- Header & Menu Combined -->
+<header class="header-menu-container">
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Take a look at our fleet.</h1>
+        <h2>We have Reasonable & Reliable vehicles for every occasion or any size family.</h2>
+        <p>Come get the keys to your next adventure!</p>
+    </div>
+
+    <!-- Menu Button on the Right -->
+    <div class="menu">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'fleet' %}">Our Fleet</a>
+            <a href="{% url 'menubookings' %}">Reservations</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+            <a href="{% url 'contact' %}">Contact & Socials</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+        </div>
+    </div>
+</header>
+
+<!--Display all cars with max (8 per page) with filters to change and cars have availability status-->
+<!-- Cars and clicks for price -->
+<body>
+    {% csrf_token %}
+    <section id="cars">
+        <div id="fleet-container">
+            <div id="cars-list" class="grid-container">
+                {% for car in cars %}
+                
+                {% empty %}
+                <p>No cars found.</p>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <span class="page-info">Page {{ cars.number }} of {{ cars.paginator.num_pages }}</span>
+                <div class="page-buttons">
+                    {% if cars.has_previous %}
+                    <a href="?page={{ cars.previous_page_number }}" id="prev-btn">← Previous</a>
+                    {% else %}
+                    <button id="prev-btn" disabled>← Previous</button>
+                    {% endif %}
+
+                    {% if cars.has_next %}
+                    <a href="?page={{ cars.next_page_number }}" id="next-btn">Next →</a>
+                    {% else %}
+                    <button id="next-btn" disabled>Next →</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+
+<!--Footer-->
+<footer>
+    <br>
+    <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+    <br>
+</footer>
+
+</body>
+
+</html>

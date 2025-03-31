@@ -1,0 +1,116 @@
+/* General Form Container Style */
+#booking-form {
+    background-color: white;     /* White background */
+    padding: 20px;               /* Padding inside the form */
+    border-radius: 10px;         /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 80%;                  /* Adjust width to fit the content */
+    max-width: 700px;            /* Max width for the form */
+    margin: 20px auto;           /* Center it horizontally */
+}
+
+/* Style for the form sections (h2) */
+#booking-form h2 {
+    font-size: 18px;
+    color: #ff0000;               /* Red color for section titles */
+    margin-bottom: 10px;          /* Space below the title */
+}
+
+/* Style for input fields (text, email, date, time) */
+#booking-form input[type="text"],
+#booking-form input[type="email"],
+#booking-form input[type="date"],
+#booking-form input[type="time"] {
+    width: 100%;                 /* Full width of input fields */
+    padding: 10px;               /* Padding inside the inputs */
+    border: 2px solid #ff0000;   /* Red border */
+    border-radius: 5px;          /* Rounded corners */
+    font-size: 14px;             /* Font size */
+    margin-bottom: 10px;         /* Space between inputs */
+    transition: border-color 0.3s ease; /* Smooth transition on focus */
+}
+
+/* Input focus effect */
+#booking-form input[type="text"]:focus,
+#booking-form input[type="email"]:focus,
+#booking-form input[type="date"]:focus,
+#booking-form input[type="time"]:focus {
+    border-color: #ff4d4d;       /* Lighter red when focused */
+    outline: none;               /* Remove default outline */
+}
+
+/* Style for the car section */
+.car {
+    background-color: #f8f8f8;  /* Light gray background for car info */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.car img {
+    width: 100%;  /* Image should take up the full container width */
+    max-width: 400px;  /* Limit image size */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Style for checkboxes in Add-ons */
+#addons-container input[type="checkbox"] {
+    margin-right: 10px;          /* Space between checkbox and label text */
+}
+
+/* Style for the Total Price */
+#addons-container h2 {
+    font-size: 16px;
+    color: #ff0000;               /* Red color for the total price */
+}
+
+/* Style for buttons */
+#booking-form button {
+    background-color: #ff0000;   /* Red background */
+    color: white;                /* White text */
+    padding: 10px 20px;          /* Padding inside the button */
+    border: none;                /* Remove default button border */
+    border-radius: 5px;          /* Rounded corners */
+    font-size: 16px;             /* Font size */
+    cursor: pointer;             /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Button hover effect */
+#booking-form button:hover {
+    background-color: #cc0000;   /* Darker red on hover */
+}
+
+/* Button active effect */
+#booking-form button:active {
+    background-color: #b30000;   /* Even darker red when clicked */
+}
+
+/* Style for labels (for better spacing and readability) */
+#booking-form label {
+    font-size: 16px;             /* Font size for labels */
+    color: #333;                 /* Dark text color */
+    display: block;              /* Ensure each label takes up a full line */
+    margin-bottom: 5px;          /* Space between label and input */
+}
+
+/* Style for car price and status */
+#booking-form .car p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Style for the car title */
+#booking-form .car h2 {
+    font-size: 20px;
+    color: #ff0000;               /* Red color for car name */
+}
+
+
+
+
+
+
+

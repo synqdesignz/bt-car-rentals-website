@@ -1,0 +1,75 @@
+/* Quick Search Section */
+#quick_search {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff; /* White background */
+}
+
+.search-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ff0000; /* Red border */
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.search-container h2 {
+    font-size: 22px;
+    color: #ff0000; /* Red heading */
+    margin-bottom: 15px;
+}
+
+/* Form Labels */
+.search-container label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Input Fields */
+.search-container input[type="date"] {
+    width: calc(100% - 22px); /* Ensures input stays inside the border */
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ff0000; /* Red border */
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Prevents overflow due to padding */
+}
+
+/* Focus Effect */
+.search-container input[type="date"]:focus {
+    border-color: #ff4d4d; /* Lighter red border */
+    outline: none;
+}
+
+/* Search Button */
+.search-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0000; /* Red background */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover & Active Effects */
+.search-container button:hover {
+    background-color: #cc0000; /* Darker red */
+}
+
+.search-container button:active {
+    background-color: #b30000; /* Even darker red */
+}

@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/terms.css' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+</head>
+
+<!-- Google Translate Dropdown -->
+<div id="googletranslate"></div>
+      
+<!-- Google Translate API -->
+ <script>
+ function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de', // Customize supported languages
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'googletranslate');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+
+<body>
+    <!-- Header & Menu Combined -->
+<header class="header-menu-container">
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Browne Transports and Car Rentals</h1>
+        <h2>We have Reasonable and Reliable cars for every occasion.</h2>
+    </div>
+
+    <!-- Menu Button on the Right -->
+    <div class="menu">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'fleet' %}">Our Fleet</a>
+            <a href="{% url 'menubookings' %}">Reservations</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+            <a href="{% url 'contact' %}">Contact & Socials</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+        </div>
+    </div>
+</header>
+    
+    
+    <section id="terms">
+        <div class="terms-container">
+            <h2>Terms and Conditions</h2>
+            <p>Welcome to Browne Transports & Rentals. Please read our terms carefully before booking a vehicle.</p>
+    
+            <h3>1. Rental Agreement</h3>
+            <p>By renting a vehicle from us, you agree to comply with all rental policies and local traffic laws.</p>
+    
+            <h3>2. Driver Requirements</h3>
+            <p>Drivers must be over 25 and under 70 years old.  Each driver must have held a valid driving license for at least two years, the license must be produced at the time of delivery of the vehicle, this is necessary for repeat clients as well.</p>
+            <p>It is mandatory by law to have a valid driver’s license to operate vehicles, or visitors can obtain a local temporary driver’s permit. A temporary driver’s permit can be purchased from our representative at a cost of $5 US each, which is valid for 2 months. These permits may also be obtained online at: href= "https://portal.bra.gov.bb/VisitorPermit </p>
+           
+            <h3>3. Our Rates and How We Charge</h3>
+            <p>Our vehicle hire rates may vary from season to season.  Our rates are determined by supply, demand and market conditions.  The price quoted on the booking is the price you pay. No Surprise Fees! Plus Unlimited mileage.</p>
+            <p>FREE island-wide delivery, with the exception of the airport (airport parking lot fee - $2 USD per hour) We do not deliver or collect from the Cruise Terminal.</p>
+            <p>Extension of the hire requests should be made 24 hours ahead of the return date, while we make every effort to allow extensions they are subject to availability and cannot be guaranteed.</p>
+
+            <h3>4. Insurance and Liability</h3>
+            <h3 id = "basic">Basic Insurance</h3>
+            <p>All of our vehicles are comprehensively insured, this meaning in the case of loss, accident or damage to the vehicles the hirer is responsible for the deductible of $2000 USD – regardless of fault. A Pre-Authorization is a one time transaction that will be placed on your credit card for an amount of  $1000.00 USD. Please note that the release time varies depending on your issuing financial institution.</p>
+            <h3 id = "cdw">Collision Damage Waiver - CDW</h3>
+            <p>The client has the option to purchase the CDW at the cost of $10 USD per day — this reduces the deductible to $250 USD. (excluding damage to rims, tyres, interior, windshield, and electronic keys and keys fobs)</p>
+            <h3 id = "sw">Super Waiver - SW</h3>
+            <p>With the super waiver the client reduces their deductible and liability to zero, at the cost of $20 USD per day.</p>
+            <p>A HOLD will be placed on the client’s credit card upon delivery, depending on the insurance coverage selected. This will be released at the end of the hire, providing the vehicle is returned with no damages.</p>            
+        
+            <h3>5. Payment & Cancellations</h3>
+            <p>A security deposit of $50 USD, which is subtracted from your total,  is required to secure your reservation. The remaining balance will be due upon collection of the vehicle. The deposit is fully refundable if the reservation is cancelled with more than 24 hours notice. Clients are asked to inform us of cancellation as soon as possible, to avoid forfeiting deposits and having reservations labeled as No Show. The client has 24 hours to contact us to reschedule delivery, before reservation is labeled No Show.</p>
+            <p>If the client’s flight is delayed and arrives after 11 p.m., he/she will not be met at the airport. Our office opens at 8:00 am, kindly call our office at (+1 246 289-0014) after 8 a.m. the following day to reschedule the delivery.</p>
+            <p>We accept payment by Visa, Mastercard, and Credit Cards. We also accept payment by direct bank transfers and cash (US, and Barbados), but note a pre-authorisation is required on a credit. </p>
+           
+            <h3>6. Additional Charges/Fuel</h3>
+            <p>Vehicle hires work on a 24-hour basis, If you hire at 8 am and return at 8 am the following day, this would be a one-day rental. There is a 15 min grace period at the end of the rental. Bare in mind of the extra charge for late returns.</p>
+            <p>We are a 100% No-Smoking Fleet. In cases where vehicles are returned with an offensive odour (e.g. smoke) or excessive debris on the interior,clients will be charged up to a maximum of $300 USD for the valet services by a professional.</p>
+            <p>Vehicles are delivered with a FULL tank of petrol. Clients must return the vehicle with a full tank, or there will be a refueling charge at the end of the hire.</p>
+            <p>The vehicle keys are not water proof - the client will be fully responsible for the replacement cost of lost or damaged keys and key fobs.</p>
+    
+            <h3>7. Contact Us</h3>
+            <p>If you have any questions regarding our terms, please contact us.</p>
+        </div>
+    </section>
+    
+
+    <!--Footer-->
+    <footer>
+        <br>
+        <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+        <br>
+    </footer>

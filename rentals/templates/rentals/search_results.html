@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/search_results.css' %}">
+    <script src="{% static 'rentals/js/search_results.js' %}"></script>
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+</head>
+
+
+<body>
+    <!-- Header & Menu Combined -->
+<header class="header-menu-container">
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Take a look at vehicles avaialble for your selected dates.</h1>
+        <h2>We have Reasonable & Reliable vehicles for every occasion or any size family.</h2>
+        <p>Come get the keys to your next adventure!</p>
+    </div>
+
+    <!-- Menu Button on the Right -->
+    <div class="menu">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'fleet' %}">Our Fleet</a>
+            <a href="{% url 'menubookings' %}">Reservations</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+            <a href="{% url 'contact' %}">Contact & Socials</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+        </div>
+    </div>
+</header>
+</body>
+
+
+{% if cars %}
+    <div id="search-cars" class="grid-container">  <!-- Ensures the cards are displayed in a grid -->
+        {% for car in cars %}
+            <div class="car-card">
+                <!-- Car Photo, with a default image as a placeholder if no image exists -->
+                {% if car.car_photo %}
+                <img src="{{ car.car_photo }}" alt="{{ car.make }} {{ car.model }}" class="car-image">
+                {% else %}
+                <img src="{% static 'rentals/images/default.png' %}" alt="Default Car" class="car-image">
+                {% endif %}
+                <h3>{{ car.make }} {{ car.model }} ({{ car.year }})</h3>
+                <p>Price per day: ${{ car.price_day }}</p>
+
+                <a href="{% url 'booking' car.id %}" class="book-now-button">Book Now</a>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No available cars for the selected dates.</p>
+{% endif %} 
+<!-- Pagination -->
+<div class="pagination">
+    <span class="page-info">{{ cars.number }} {{ cars.paginator.num_pages }}</span>
+    <div class="page-buttons">
+        {% if cars.has_previous %}
+        <a href="?page={{ cars.previous_page_number }}" id="prev-btn">← Previous</a>
+        {% else %}
+        <button id="prev-btn" disabled>← Previous</button>
+        {% endif %}
+
+        {% if cars.has_next %}
+        <a href="?page={{ cars.next_page_number }}" id="next-btn">Next →</a>
+        {% else %}
+        <button id="next-btn" disabled>Next →</button>
+        {% endif %}
+    </div>
+</div>
+
+
+    <!--Footer-->
+    <footer>
+        <br>
+        <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+        <br>
+    </footer>
+
+</body>
+
+</html>
+
+

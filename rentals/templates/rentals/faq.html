@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/faq.css' %}">
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+
+</head>
+
+
+<body>
+    <!-- Header & Menu Combined -->
+<header class="header-menu-container">
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Browne Transports and Car Rentals</h1>
+        <h2>We have Reasonable and Reliable cars for every occasion.</h2>
+        <p>Get the keys to your next adventure!</p>
+    </div>
+
+    <!-- Menu Button on the Right -->
+    <div class="menu">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'fleet' %}">Our Fleet</a>
+            <a href="{% url 'menubookings' %}">Reservations</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+            <a href="{% url 'contact' %}">Contact & Socials</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+        </div>
+    </div>
+</header>
+</body>
+
+
+
+
+<section id="faq">
+    <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our rental services.</p>
+
+        <div class="faq-item">
+            <h3>1. How do I book a car?</h3>
+            <p>You can book a car through our online reservation system or by contacting us directly.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. What are the requirements to rent a car?</h3>
+            <p>All drivers must be at least 21 years old and have a valid driver’s license.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. Is insurance included in the rental price?</h3>
+            <p>Yes, all rentals include basic insurance. Additional coverage options are available.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. What is your cancellation policy?</h3>
+            <p>Bookings can be canceled up to 24 hours before pickup without a fee. Late cancellations may incur a charge.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. What payment methods do you accept?</h3>
+            <p>We accept major credit cards, debit cards, and online payments.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>6. Do you offer long-term rentals?</h3>
+            <p>Yes! We provide discounts for long-term rentals. Contact us for more details.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>7. Can I return the car to a different location?</h3>
+            <p>Yes, but additional fees may apply. Please check with us in advance.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>8. What happens if I return the car late?</h3>
+            <p>A late return fee will apply. We recommend informing us if you're running late.</p>
+        </div>
+    </div>
+</section>
+
+
+<!--Footer-->
+<footer>
+    <br>
+    <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+    <br>
+</footer>

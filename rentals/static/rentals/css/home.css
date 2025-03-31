@@ -1,0 +1,243 @@
+/* Quick Search Section */
+#quick_search {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff; /* White background */
+}
+
+.search-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ff0000; /* Red border */
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.search-container h2 {
+    font-size: 22px;
+    color: #ff0000; /* Red heading */
+    margin-bottom: 15px;
+}
+
+/* Form Labels */
+.search-container label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Input Fields */
+.search-container input[type="date"] {
+    width: calc(100% - 22px); /* Ensures input stays inside the border */
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ff0000; /* Red border */
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Prevents overflow due to padding */
+}
+
+/* Focus Effect */
+.search-container input[type="date"]:focus {
+    border-color: #ff4d4d; /* Lighter red border */
+    outline: none;
+}
+
+/* Search Button */
+.search-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0000; /* Red background */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover & Active Effects */
+.search-container button:hover {
+    background-color: #cc0000; /* Darker red */
+}
+
+.search-container button:active {
+    background-color: #b30000; /* Even darker red */
+}
+
+
+
+
+
+
+
+/* Fleet Section */
+#cars {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff; /* White background */
+}
+
+h3 {
+    color: #ff0000; /* Red heading */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Cars Container */
+#cars-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Grid for Car Cards */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Car Card */
+.car-card {
+    background-color: #ffffff; /* White background */
+    border: 2px solid #ff0000; /* Red border */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.car-card:hover {
+    transform: scale(1.05);
+}
+
+/* Car Image */
+.car-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border-bottom: 2px solid #ff0000;
+}
+
+/* Car Info */
+.car-card h3 {
+    font-size: 18px;
+    color: #000;
+    margin-top: 10px;
+}
+
+.car-card p {
+    font-size: 14px;
+    color: #444;
+    margin: 5px 0;
+}
+
+/* Book Now Button */
+.book-now-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #ff0000; /* Red background */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.book-now-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+/* Show More Button */
+.show-more-btn {
+    margin-top: 30px;
+}
+
+.show-more-btn .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.show-more-btn .btn:hover {
+    background-color: #cc0000;
+}
+
+
+
+
+/* Reviews Section */
+#customer-reviews {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff; /* White background */
+}
+
+.reviews-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ff0000; /* Red border */
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-container h2 {
+    font-size: 24px;
+    color: #ff0000; /* Red heading */
+    margin-bottom: 15px;
+}
+
+.reviews-container p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.review {
+    background-color: #fff;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 5px solid #ff0000; /* Red left border for emphasis */
+    text-align: left;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+/* Review Button */
+.review-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0000; /* Red background */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.review-btn:hover {
+    background-color: #cc0000; /* Darker red */
+}

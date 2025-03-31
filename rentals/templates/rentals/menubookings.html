@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/menubookings.css' %}">
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+</head>
+
+<!-- Google Translate Dropdown -->
+<div id="googletranslate"></div>
+      
+<!-- Google Translate API -->
+ <script>
+ function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de', // Customize supported languages
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'googletranslate');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+
+<body>
+    <!-- Header & Menu Combined -->
+<header class="header-menu-container">
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Browne Transports and Car Rentals</h1>
+        <h2>We have Reasonable and Reliable cars for every occasion.</h2>
+        <p>Come get the keys to your next adventure!</p>
+    </div>
+
+    <!-- Menu Button on the Right -->
+    <div class="menu">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'fleet' %}">Our Fleet</a>
+            <a href="{% url 'menubookings' %}">Reservations</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+            <a href="{% url 'contact' %}">Contact & Socials</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+        </div>
+    </div>
+</header>
+    </header>  
+
+  <section id="quick_search">
+        <div class="search-container">
+            <h2>Quick Search For Availability</h2>
+            <form method="GET" action="{% url 'search_available_cars' %}">
+                <label for="start_da">Start Date:</label>
+                <input type="date" id="start_da" name="start_da" required>
+    
+                <label for="end_da">End Date:</label>
+                <input type="date" id="end_da" name="end_da" required>
+    
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+    
+
+
+<!-- Display 1-3 cars/review/local adds -->
+ 
+<!-- Contact -->
+
+
+
+
+<!--Footer-->
+<footer>
+    <br>
+    <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+    <br>
+</footer>
+
+</body>
+
+</html>
+  

@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/home.css' %}">
+    <script src="{% static 'rentals/js/home.js' %}"></script>
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+
+</head>
+<!-- Google Translate Dropdown 
+<div id="googletranslate"></div>-->
+      
+<!-- Google Translate API 
+ <script>
+ function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de', // Customize supported languages
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'googletranslate');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+-->
+
+<body>
+
+
+   <!-- Header & Menu Combined -->
+<header class="header-menu-container">
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Browne Transports and Car Rentals</h1>
+        <h2>We have Reasonable and Reliable cars for every occasion.</h2>
+        <p>Come get the keys to your next adventure!</p>
+    </div>
+
+    <!-- Menu Button on the Right -->
+    <div class="menu">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'fleet' %}">Our Fleet</a>
+            <a href="{% url 'menubookings' %}">Reservations</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+            <a href="{% url 'contact' %}">Contact & Socials</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+        </div>
+    </div>
+</header>
+
+    <section id="quick_search">
+        <div class="search-container">
+            <h2>Quick Search For Availability</h2>
+            <form method="GET" action="{% url 'search_available_cars' %}">
+                <label for="start_da">Start Date:</label>
+                <input type="date" id="start_da" name="start_da" required>
+    
+                <label for="end_da">End Date:</label>
+                <input type="date" id="end_da" name="end_da" required>
+    
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+    
+    
+ 
+    <!--Preview of Cars (avaialble/most popular)-->
+    
+    <section id="cars">
+        <div id="cars-container">
+            <h3>Take A Look at Our Fleet</h3>
+            <div id="cars-pre" class="grid-container">
+                {% for car in cars %}
+                <!--home.js handles the code from here-->
+                
+                </div>
+                {% empty %}
+                <p>No cars found.</p>
+                {% endfor %}
+            </div>
+    
+            <!-- Show More Button -->
+            <div class="show-more-btn">
+                <a href="{% url 'fleet' %}" class="btn">Show More</a>
+            </div>
+        </div>
+    </section>
+    
+    
+     <!--About Us.-->
+     <section id="about-us">
+        <div class="about-container">
+            <h2>About Browne Transports & Rentals</h2>
+            <p>
+                Welcome to Browne Transports & Rentals! We provide Reasonable and Reliable rental vehicles for all occasions. 
+                Whether you're looking for a smooth ride for your daily commute, a luxury car for a special event, or a spacious SUV for a family trip, 
+                we've got you covered. Our fleet is well-maintained, insured, and ready for the road.
+            </p>
+            <p>
+                We pride ourselves on exceptional customer service, transparent pricing, and flexible booking options. Your journey starts with us!
+                Book now and drive with confidence.  
+            </p>
+            <a href="{% url 'fleet' %}" class="learn-more-btn">Explore Our Fleet</a>
+        </div>
+    </section>
+    
+
+
+      <!--Reviews(4-5 Stars)-->
+      <section id="customer-reviews">
+        <div class="reviews-container">
+            <h2>What Our Customers Say</h2>
+            <p>See what our happy customers have to say about their experience!</p>
+    
+            <div class="review">
+                <p><strong>⭐️⭐️⭐️⭐️⭐️</strong></p>
+                <p>"Excellent service! The car was clean, well-maintained, and the process was smooth. Highly recommend!"</p>
+                <p><strong>- Jason B.</strong></p>
+            </div>
+    
+            <div class="review">
+                <p><strong>⭐️⭐️⭐️⭐️⭐️</strong></p>
+                <p>"Affordable prices and friendly staff. The rental was hassle-free and made my trip much easier!"</p>
+                <p><strong>- Sarah L.</strong></p>
+            </div>
+    
+            <div class="review">
+                <p><strong>⭐️⭐️⭐️⭐️⭐️</strong></p>
+                <p>"Great experience renting from Browne Rentals. Will definitely use their services again!"</p>
+                <p><strong>- Michael R.</strong></p>
+            </div>
+    
+            <a href="#" class="review-btn">Leave a Review</a>
+        </div>
+    </section>
+    
+    
+
+    <!--Quick Contact Info-->
+    <section id="contact-us">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? We're here to help!</p>
+            
+            <div class="contact-info">
+                <p><strong>📍 Address:</strong> 123 Main Street, Bridgetown, Barbados</p>
+                <p><strong>📞 Phone:</strong> +1 (246) 123-4567</p>
+                <p><strong>📧 Email:</strong> support@brownerentals.com</p>
+                <p><strong>⏰ Working Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</p>
+            </div>
+
+            <a href="mailto:support@brownerentals.com" class="contact-btn">Email Us</a>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+        <br>
+        <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+        <br>
+    </footer>
+</body>
+
+</html>

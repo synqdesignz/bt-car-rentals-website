@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Rentals-Reservations</title>
+    <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
+    <link rel="stylesheet" href="{% static 'rentals/css/bookings.css' %}">
+    <link rel="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <script src="{% static 'rentals/js/bookings.js' %}"></script>
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+
+</head>
+
+<!-- Google Translate Dropdown 
+<div id="googletranslate"></div>
+      
+ Google Translate API 
+ <script>
+ function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de', // Customize supported languages
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'googletranslate');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+-->
+
+<body>
+    <!-- Header & Menu Combined -->
+    <header class="header-menu-container">
+        <!-- Header Content -->
+        <div class="header-content">
+            <h1>Reservations</h1>
+            <h2>Get the keys to your next adventure</h2>
+        </div>
+
+        <!-- Menu Button on the Right -->
+        <div class="menu">
+            <button class="menu-button">☰ Menu</button>
+            <div class="dropdown">
+                <a href="{% url 'homepage' %}">Home</a>
+                <a href="{% url 'fleet' %}">Our Fleet</a>
+                <a href="{% url 'menubookings' %}">Reservations</a>
+                <a href="{% url 'terms' %}">Terms and Conditions</a>
+                <a href="{% url 'contact' %}">Contact & Socials</a>
+                <a href="{% url 'about' %}">About Us</a>
+                <a href="{% url 'faq' %}">FAQ</a>
+            </div>
+        </div>
+    </header>
+
+
+    <form id="booking-form" method="POST">
+        {% csrf_token %}
+        <!--Customer Infomation-->
+        <h2>Customer Information</h2>
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="text" name="contact" placeholder="Contact Number" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+
+
+        <!-- Selected Car -->
+        <div class="car">
+            <h2>Selected Vehicle: {{ car.make }} {{ car.model }}</h2>
+
+            {% if car.car_photo %}
+            <!-- Make sure the image path is correct by using MEDIA_URL -->
+            <img src="{{ car.car_photo.url }}" alt="{{ car.make }} {{ car.model }}" class="car-image">
+            {% else %}
+            <img src="{% static 'rentals/images/default.png' %}" alt="Default Image" class="car-image">
+            {% endif %}
+
+            <p><strong>Price per day:</strong> $<span id="price-per-day">{{ car.price_day }}</span></p>
+            <p><strong>Car Status:</strong> {{ car.car_status }}</p>
+        </div>
+
+
+
+        <!--Date Time & Location-->
+        <h2>Booking Details</h2>
+        <label>Pick-up Date</label>
+        <input type="date" name="pickup_date" id="pickup-date" required>
+
+        <label>Drop-off Date</label>
+        <input type="date" name="dropoff_date" id="dropoff-date" required>
+
+        <label>Time</label>
+        <input type="time" name="pickup_time" required>
+
+        <label>Pick-up Location</label>
+        <input type="text" name="pickup_location" required>
+
+        <!--Add-Ons(Car Seat,GPS,ETC)-->
+        <h2>Add-ons</h2>
+        <div id="addons-container">
+            {% for addition in additions %}
+            <label>
+                <input type="checkbox" name="additions" class="addon-checkbox" data-price="{{ addition.price }}"
+                    value="{{ addition.id }}"> {{ addition.name }} (+${{ addition.price }} per day)
+            </label><br>
+            {% endfor %}
+            <h2>Total Price: $<span id="total-price">0.00</span></h2>
+
+            <button type="submit">Proceed</button>
+    </form>
+    </div>
+
+
+
+
+    <!--Footer-->
+    <footer>
+        <br>
+        <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+        <br>
+    </footer>
+</body>
+
+</html>
