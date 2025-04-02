@@ -64,35 +64,7 @@ class Bookings(models.Model):
         db_table = 'bookings'
         managed = False
       
-        
-
-
-# Payments Module
-class Payments(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    booking = models.ForeignKey(Bookings, on_delete=models.CASCADE, blank=True, null=True)
-    car = models.ForeignKey(Cars, on_delete=models.CASCADE, blank=True, null=True)
-    customer = models.ForeignKey(Customers, on_delete=models.CASCADE, blank=True, null=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_status = models.CharField(max_length=9, blank=True, null=True)
-    payment_date = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        db_table = 'payments'
-        managed = False
-
-
-
-#Bookings_Additions Many to Many
-class BookingsAdditions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    bookings = models.ForeignKey(Bookings, on_delete=models.CASCADE)
-    additions = models.ForeignKey(Additions, on_delete=models.CASCADE)
-
-    class Meta:
-        db_table = 'bookings_additions'
-        managed = False
-
+    
 
     
 

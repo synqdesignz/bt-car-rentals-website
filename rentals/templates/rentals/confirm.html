@@ -75,15 +75,17 @@
             </div>
 
             <!-- Disclaimer Agreement Section -->
-            <div class="payment-section">
-                <label>
-                    <input type="checkbox" name="terms_agreement" required>
-                    I have read and agree to the <a href="{% url 'terms' %}" target="_blank">terms and conditions</a>.
-                </label>
-            </div>
-
-            <form action="{% url 'confirm' booking.id %}" method="POST">
+            
+            <form action="{% url 'confirm' %}" method="POST">
                 {% csrf_token %}
+
+                <div class="payment-section">
+                    <label>
+                        <input type="checkbox" name="terms_agreement" id="terms_agreement" required>
+                        I have read and agree to the <a href="{% url 'terms' %}" target="_blank">terms and conditions</a>.
+                    </label>
+                </div>
+                
                 <button type="submit">Confirm Booking</button>
             </form>
         </div>

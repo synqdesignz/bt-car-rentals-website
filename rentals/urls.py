@@ -14,6 +14,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('faq/', views.faq, name='faq'),
     path('booking/<int:car_id>/', views.booking, name='booking'),
-    path('confirm/<int:booking_id>/', views.confirm, name='confirm'),
+    path('confirm/', views.confirm, name='confirm'),
     path('search/', views.search_available_cars, name='search_available_cars'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
