@@ -9,8 +9,7 @@
     <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
     <link rel="stylesheet" href="{% static 'rentals/css/bookings.css' %}">
     <link rel="stylesheet" href="{% static 'rentals/css/style.css' %}">
-    <script src="{% static 'rentals/js/bookings.js' %}"></script>
-    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 </head>
 
@@ -85,7 +84,7 @@
         <!--Date Time & Location-->
         <h2>Booking Details</h2>
         <label>Pick-up Date</label>
-        <input type="date" name="pickup_date" id="pickup-date" required>
+        <input type="date" name="pickup_date" id="pickup-date" data-car-id = "{{ car.id}}" required>
 
         <label>Drop-off Date</label>
         <input type="date" name="dropoff_date" id="dropoff-date" required>
@@ -110,6 +109,10 @@
             <button type="submit">Proceed</button>
     </form>
     </div>
+    
+    <script src="{% static 'rentals/js/bookings.js' %}"></script>
+    <script src="{% static 'rentals/js/scripts.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
 

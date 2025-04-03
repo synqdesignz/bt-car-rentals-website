@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cars, Bookings, Additions, Customers
 from django.templatetags.static import static
-from datetime import datetime
+from datetime import datetime,timedelta
 from django.utils import timezone
 from django.conf import settings
 import smtplib
@@ -222,12 +222,12 @@ def confirm(request):
         terms_agreement = "terms_agreement" in request.POST
 
         if terms_agreement:
-            customer, created = Customers.objects.get_or_create(
-                email = customer_data["email"],
-                first_name = customer_data["first_name"],
-                last_name = customer_data["last_name"],
-                contact = customer_data["contact"],
-            )
+            customer, created = Customers.objects.update_or_create(
+                email = customer_data["email"], defaults={
+                "first_name": customer_data["first_name"],
+                "last_name": customer_data["last_name"],
+                "contact": customer_data["contact"],
+            })
             booking_data["customer_id"] = customer.id
             request.session["booking_data"] = booking_data
             
@@ -254,7 +254,7 @@ def confirm(request):
             send_booking_email(customer, car, additions, total_price)
             
             # Redirect to success page
-            return redirect('fleet')
+            return redirect('fleet')#change to tahank you page
 
         else:
             # Redirect to an error page if terms were not agreed to
@@ -262,9 +262,8 @@ def confirm(request):
 
     # Render the confrimation page
     return render(request, "rentals/confirm.html", {
-        "booking": booking, #fix this
         "car": car,
-        "customer": customer,
+        "customer": customer_data,
         "additions": additions,
         "total_price": total_price
     })
@@ -344,3 +343,25 @@ def send_email(subject, message, sender_email, recipient_list):
 
         except Exception as e:
             print(f"❌Failed to send email to {recipient_email}: {e}")
+
+
+
+#Block Dates
+def get_booked_dates(request, car_id):
+    """Return a list of booked dates for a given car ID."""
+    booked_dates = []
+    
+    # Fetch all bookings for the selected car
+    bookings = Bookings.objects.filter(car_id=car_id)
+
+    for booking in bookings:
+        start_da = booking.start_da
+        end_da = booking.end_da
+        current_date = start_da
+        
+        # Add all booked dates to the list
+        while current_date <= end_da:
+            booked_dates.append(current_date.strftime("%Y-%m-%d"))
+            current_date += timedelta(days=1)
+
+    return JsonResponse({"booked_dates": booked_dates})

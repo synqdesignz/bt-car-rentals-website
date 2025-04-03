@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("dropoff-date").addEventListener("change", calculateTotal);
 });
 
-
-
+//Display Addons and adjust price to match
 document.addEventListener("DOMContentLoaded", function() {
     let pricePerDayElement = document.getElementById("price-per-day");
     let totalPriceElement = document.getElementById("total-price");
@@ -61,3 +60,47 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("dropoff-date").addEventListener("change", calculateTotal);
     addonCheckboxes.forEach(checkbox => checkbox.addEventListener("change", calculateTotal));
 });
+
+//Disable Dates for booked cars
+document.addEventListener("DOMContentLoaded", function () {
+    const pickupDateInput = document.getElementById("pickup-date");
+    const dropoffDateInput = document.getElementById("dropoff-date");
+    const carId = pickupDateInput.dataset.carId;  // Assume data attribute on input
+    
+    //Setting Default dates
+    const today= new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    // Format dates as "YYYY-MM-DD" for DJango
+    const todayStr = today.toISOString().split("T")[0];
+    const tomorrowStr = tomorrow.toISOString().split("T")[0];
+    pickupDateInput.value = todayStr;
+    dropoffDateInput.value = tomorrowStr;
+
+    // Fetch booked dates from Django
+    fetch(`/get_booked_dates/${carId}/`)
+        .then(response => response.json())
+        .then(data => {
+            const bookedDates = data.booked_dates;
+
+            // Initialize date picker with disabled dates
+            flatpickr(pickupDateInput, {
+                dateFormat: "Y-m-d",
+                disable: bookedDates.concat([{ from: "2000-01-01", to: new Date().toISOString().split("T")[0] }]), // Block past dates
+                minDate: "today",
+                onChange: function (selectedDates, dateStr) {
+                    dropoffDateInput.flatpickr.set("minDate", dateStr);
+                }
+            });
+
+            flatpickr(dropoffDateInput, {
+                dateFormat: "Y-m-d",
+                disable: bookedDates,
+                minDate: "today"
+            });
+        })
+
+});
+
+

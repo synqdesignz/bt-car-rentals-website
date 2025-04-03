@@ -109,7 +109,44 @@
 }
 
 
+.flatpickr-input {
+    background-color: white;
+    cursor: pointer;
+    padding-right: 10px; 
+}
 
+.flatpickr-calendar {
+    z-index: 9999 !important; /* Ensure it appears above everything */
+}
+
+.flatpickr-day {
+    color: #47e3ff; /* Example: Change number color to tomato */
+}
+/* Change the background color of the selected day */
+.flatpickr-day.selected {
+    background-color: #4caf50; /* Example: Change background to green */
+    color: white; /* Text color for selected day */
+}
+
+/* Change the color of the today button */
+.flatpickr-current-day {
+    color: #089703; /* Example: Change today's button color */
+}
+
+/* Change the background color of hovered days */
+.flatpickr-day:hover {
+    background-color: #eb0a0a; /* Example: Change background on hover */
+}
+
+/* Change the color of the days in the previous month */
+.flatpickr-day.prevMonthDay {
+    color: #ff0000; /* Example: Light gray for previous month's days */
+}
+
+/* Change the color of the days in the next month */
+.flatpickr-day.nextMonthDay {
+    color: #f70c0c; /* Example: Light gray for next month's days */
+}
 
 
 
