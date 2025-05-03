@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = os.getenv ("ALLOWED_HOSTS", "https://bt-car-rentals.onrender.com/").split(',')
+ALLOWED_HOSTS = ["bt-car-rentals.onrender.com"]
 
 
 # Application definition
