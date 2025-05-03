@@ -34,7 +34,7 @@ class Customers(models.Model):
 
     class Meta:
         db_table = 'customers'
-        managed = False
+        
 
 
 #Additions Module
@@ -45,7 +45,7 @@ class Additions(models.Model):
 
     class Meta:
         db_table = 'additions'
-        managed = False
+        
 
 # Bookings Module
 class Bookings(models.Model):
@@ -62,7 +62,7 @@ class Bookings(models.Model):
 
     class Meta:
         db_table = 'bookings'
-        managed = False
+    
       
     
 
