@@ -49,13 +49,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'btrentals.urls'
@@ -91,7 +91,9 @@ DATABASES = {
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', '4000'),
         'OPTIONS': {
-            'ssl': {'ca': "C:\\Users\\Romario\\Desktop\\The Mind of a King\\Web Dev\\bt_website\\myenv\\Lib\\site-packages\\certifi\\isrgrootx1.pem"}
+            'ssl': {
+                'ca': os.getenv('SSL_CERT_FILE', 'path/to/default/cert.pem')
+            }        
         }
     }
 }
