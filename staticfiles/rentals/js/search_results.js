@@ -15,12 +15,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     async function loadCars(page) {
-        let response = await fetch(`/fleet/?page=${page}`, {
+        let response = await fetch(`/search/?page=${page}`, {
             headers: { "X-Requested-With": "XMLHttpRequest" }
         });
         let data = await response.json();
 
-        let container = document.getElementById("cars-list");
+        let container = document.getElementById("search-cars");
         container.innerHTML = "";
 
         data.cars.forEach(car => {

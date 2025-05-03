@@ -15,22 +15,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     async function loadCars(page) {
-        let response = await fetch(`/fleet/?page=${page}`, {
+        let response = await fetch(`/homepage/?page=${page}`, {
             headers: { "X-Requested-With": "XMLHttpRequest" }
         });
         let data = await response.json();
 
-        let container = document.getElementById("cars-list");
+        let container = document.getElementById("cars-pre");
         container.innerHTML = "";
 
         data.cars.forEach(car => {
+            let carImage = car.car_photo ? car.car_photo : "/static/rentals/images/default.png";
+
             container.innerHTML += `
                 <div class="car-card">
-                    <img src="${car.car_photo || 'rentals/default.png'}" alt="${car.make}">
+                    <img src="${carImage}" alt="${car.make}">
                     <h3>${car.make} ${car.model} (${car.year})</h3>
                     <p>Reg: ${car.reg_no}</p>
                     <p>Status: ${car.car_status}</p>
                     <p>Price per day: $${car.price_day}</p>
+                    <a href="/booking/${car.id}" class="book-now-button">Book Now</a>
                 </div>
             `;
         });
