@@ -85,7 +85,7 @@ def fleet_list(request):
     page_number = request.GET.get('page')
     cars = paginator.get_page(page_number)
 
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         data = {
             'cars': [
                 {

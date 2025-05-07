@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     async function loadCars(page) {
-        let response = await fetch(`/fleet/?page=${page}`, {
+        let response = await fetch(`/api/fleet/?page=${page}`, {
             headers: { "X-Requested-With": "XMLHttpRequest" }
         });
         let data = await response.json();
