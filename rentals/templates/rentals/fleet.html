@@ -61,28 +61,15 @@
     <section id="cars">
         <div id="fleet-container">
             <div id="cars-list" class="grid-container">
-                {% for car in cars %}
-                
-                {% empty %}
-                <p>No cars found.</p>
-                {% endfor %}
+             
             </div>
 
             <!-- Pagination -->
             <div class="pagination">
-                <span class="page-info">Page {{ cars.number }} of {{ cars.paginator.num_pages }}</span>
+                <span id="page-info">Page 1</span>
                 <div class="page-buttons">
-                    {% if cars.has_previous %}
-                    <a href="?page={{ cars.previous_page_number }}" id="prev-btn">← Previous</a>
-                    {% else %}
-                    <button id="prev-btn" disabled>← Previous</button>
-                    {% endif %}
-
-                    {% if cars.has_next %}
-                    <a href="?page={{ cars.next_page_number }}" id="next-btn">Next →</a>
-                    {% else %}
-                    <button id="next-btn" disabled>Next →</button>
-                    {% endif %}
+                    <button id="prev-btn">← Previous</button>
+                    <button id="next-btn">Next →</button>
                 </div>
             </div>
         </div>

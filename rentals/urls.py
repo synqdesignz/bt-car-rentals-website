@@ -6,8 +6,8 @@ from django.conf import settings
 urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('homepage/', views.homepage_cars, name='homepage_cars'),
-    path('api/fleet/', views.fleet_list, name='fleet-list'),
     path('fleet/', views.fleet, name='fleet'),
+    path('fleet-api/', views.fleet_list, name='fleet-list'),
     path('menubookings/', views.menubookings, name='menubookings'),
     path('terms/', views.terms, name='terms'),
     path('contact/', views.contact, name='contact'),

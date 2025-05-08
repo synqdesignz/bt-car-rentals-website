@@ -1,4 +1,4 @@
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cars, Bookings, Additions, Customers
@@ -9,8 +9,6 @@ from django.conf import settings
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
-
 
 def homepage(request):
     return render(request, 'rentals/homepage.html')
@@ -83,33 +81,31 @@ def fleet_list(request):
     cars_list = Cars.objects.all().order_by('-id')  # Get all cars
     paginator = Paginator(cars_list, 24)  # 8 cars per page
     page_number = request.GET.get('page')
-    cars = paginator.get_page(page_number)
+    
+    try:
+        cars = paginator.page(page_number)
+    except PageNotAnInteger:
+        cars = paginator.page(1)
+    except EmptyPage:
+        cars = paginator.page(paginator.num_pages)
 
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        data = {
-            'cars': [
-                {
-                    "id": car.id,
-                    "reg_no": car.reg_no,
-                    "make": car.make,
-                    "model": car.model,
-                    "year": car.year,
-                    # Ensure JSON serializable
-                    "price_day": float(car.price_day),
-                    "car_status": car.car_status,
-                    "car_photo": request.build_absolute_uri(car.car_photo.url) if car.car_photo else None,
-                }
-                for car in cars
-            ],
-            'has_next': cars.has_next(),
-            'has_previous': cars.has_previous(),
-            'next_page': cars.next_page_number() if cars.has_next() else None,
-            'previous_page': cars.previous_page_number() if cars.has_previous() else None,
-        }
-        return JsonResponse(data)
-
-    return render(request, 'rentals/fleet.html', {'cars': cars})
-
+    data = {
+        'cars': [
+            {
+                "id": car.id,
+                "make": car.make,
+                "model": car.model,
+                "year": car.year,
+                "price_day": float(car.price_day),
+                "car_status": car.car_status,
+                "car_photo": car.car_photo.url if car.car_photo else '',
+            }
+            for car in cars
+        ],
+        'has_next': cars.has_next(),
+        'has_previous': cars.has_previous(),
+    }
+    return JsonResponse(data)
 
 # Homepage Car Display
 def homepage_cars(request):
