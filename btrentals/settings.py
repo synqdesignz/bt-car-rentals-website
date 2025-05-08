@@ -103,7 +103,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', '4000'),
         'OPTIONS': {
             'ssl': {
-                'ca': {ca_cert_path} if ca_cert_path else {}
+                'ca': {ca_cert_path} if ca_cert_path else None
             }        
         }
     }
