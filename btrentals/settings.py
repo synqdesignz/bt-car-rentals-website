@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-import os
+import os, base64
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -84,6 +84,15 @@ WSGI_APPLICATION = 'btrentals.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv()
+
+ca_cert_path = None
+base64_cert = os.getenv("MYSQL_SSL_CA_BASE64")
+if base64_cert:
+    ca_cert_path = "/tmp/render_ca_cert.pem"
+    with open(ca_cert_path, "wb") as cert_file:
+        cert_file.write(base64.b64decode(base64_cert))
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -94,7 +103,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', '4000'),
         'OPTIONS': {
             'ssl': {
-                'ca': os.getenv('SSL_CERT_FILE', 'path/to/default/cert.pem')
+                'ca': {ca_cert_path} if ca_cert_path else {}
             }        
         }
     }
