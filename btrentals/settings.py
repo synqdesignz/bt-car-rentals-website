@@ -90,8 +90,11 @@ base64_cert = os.getenv("MYSQL_SSL_CA_BASE64")
 if base64_cert:
     ca_cert_path = "/tmp/render_ca_cert.pem"
     with open(ca_cert_path, "wb") as cert_file:
-        cert_file.write(base64.b64decode(base64_cert))
+        cert_file.write(base64.b64decode(base64_cert.strip()))
 
+db_options = {}
+if ca_cert_path:
+    db_options["ssl"] = {"ca": ca_cert_path}
 
 DATABASES = {
     'default': {
@@ -101,13 +104,9 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', '4000'),
-        'OPTIONS': {
-            'ssl': {
-                'ca': {ca_cert_path} if ca_cert_path else None
-            }        
+        'OPTIONS':  db_options,
         }
     }
-}
 
 # Load environment variables from .env file
 load_dotenv()
