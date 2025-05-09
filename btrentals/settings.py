@@ -28,7 +28,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+#DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True
 
 
 
@@ -84,8 +85,8 @@ WSGI_APPLICATION = 'btrentals.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv()
-
-ca_cert_path = None
+#prod settings
+'''ca_cert_path = None
 base64_cert = os.getenv("MYSQL_SSL_CA_BASE64")
 if base64_cert:
     ca_cert_path = "/tmp/render_ca_cert.pem"
@@ -107,6 +108,24 @@ DATABASES = {
         'OPTIONS':  db_options,
         }
     }
+'''
+    
+#dev settings
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '4000'),
+        'OPTIONS': {
+            'ssl': {
+                'ca': os.getenv('SSL_CERT_FILE', 'path/to/default/cert.pem')
+            }        
+        }
+    }
+}
 
 # Load environment variables from .env file
 load_dotenv()
