@@ -28,8 +28,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = os.getenv('DEBUG', 'False') == 'True'
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
 
 
 
@@ -85,6 +85,7 @@ WSGI_APPLICATION = 'btrentals.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv()
+
 #prod settings
 ca_cert_path = None
 base64_cert = os.getenv("MYSQL_SSL_CA_BASE64")
