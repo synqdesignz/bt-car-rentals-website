@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'btrentals.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv()
 #prod settings
-'''ca_cert_path = None
+ca_cert_path = None
 base64_cert = os.getenv("MYSQL_SSL_CA_BASE64")
 if base64_cert:
     ca_cert_path = "/tmp/render_ca_cert.pem"
@@ -126,6 +126,7 @@ DATABASES = {
         }
     }
 }
+'''
 
 # Load environment variables from .env file
 load_dotenv()
