@@ -7,8 +7,12 @@ from datetime import datetime,timedelta
 from django.utils import timezone
 from django.conf import settings
 import smtplib
+import resend
+from resend import emails
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
+resend.api_key = settings.RESEND_API_KEY
 
 def homepage(request):
     return render(request, 'rentals/homepage.html')
@@ -316,30 +320,17 @@ def send_booking_email(customer, car, additions, total_price):
 
 #Email Settings
 def send_email(subject, message, sender_email, recipient_list):
-    smtp_server = "smtp.sendgrid.net"
-    smtp_port = 587
-    smtp_username = settings.EMAIL_HOST_USER
-    smtp_password = settings.EMAIL_HOST_PASSWORD
-
     for recipient_email in recipient_list:
-        msg = MIMEMultipart()
-        msg["From"] = sender_email
-        msg["To"] = recipient_email
-        msg["Subject"] = subject
-
-        msg.attach(MIMEText(message, "plain"))
-        
         try:
-            server = smtplib.SMTP(smtp_server, smtp_port)
-            server.starttls()
-            server.login(smtp_username, smtp_password)
-            server.sendmail(sender_email, recipient_email, msg.as_string())
-            server.quit()
-            
-
+            resend.Emails.send({
+                "from": sender_email,
+                "to": recipient_email,
+                "subject": subject,
+                "html": message.replace("\n", "<br>")  # convert plain to HTML
+            })
+            print(f"✅ Sent email to {recipient_email}")
         except Exception as e:
-            print(f"❌Failed to send email to {recipient_email}: {e}")
-
+            print(f"❌ Failed to send email to {recipient_email}: {e}")
 
 
 #Block Dates

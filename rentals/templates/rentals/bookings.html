@@ -29,30 +29,37 @@
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
 -->
 
+
 <body>
     <!-- Header & Menu Combined -->
-    <header class="header-menu-container">
-        <!-- Header Content -->
-        <div class="header-content">
-            <h1>Reservations</h1>
-            <h2>Get the keys to your next adventure</h2>
-        </div>
+    <header>
+        <div class="header-menu-container">
+            <div class="logo-container">
+                <a href="{% url 'homepage' %}">
+                    <img src="{% static 'rentals/images/BrowneTransports.png' %}" alt="Browne Transports Logo" class="header-logo">
+                </a>
+            </div>
+            
+            <div class="header-content">
+                <h1>Reservations & Info</h1>
+                <h2>Get the keys to your next adventure.</h2>
+            </div>
 
-        <!-- Menu Button on the Right -->
-        <div class="menu">
-            <button class="menu-button">☰ Menu</button>
-            <div class="dropdown">
-                <a href="{% url 'homepage' %}">Home</a>
-                <a href="{% url 'fleet' %}">Our Fleet</a>
-                <a href="{% url 'menubookings' %}">Reservations</a>
-                <a href="{% url 'terms' %}">Terms and Conditions</a>
-                <a href="{% url 'contact' %}">Contact & Socials</a>
-                <a href="{% url 'about' %}">About Us</a>
-                <a href="{% url 'faq' %}">FAQ</a>
+            <!-- Menu Button on the Right -->
+            <div class="menu">
+                <button class="menu-button">☰ Menu</button>
+                <div class="dropdown">
+                    <a href="{% url 'homepage' %}">Home</a>
+                    <a href="{% url 'fleet' %}">Our Fleet</a>
+                    <a href="{% url 'menubookings' %}">Reservations</a>
+                    <a href="{% url 'terms' %}">Terms and Conditions</a>
+                    <a href="{% url 'contact' %}">Contact & Socials</a>
+                    <a href="{% url 'about' %}">About Us</a>
+                    <a href="{% url 'faq' %}">FAQ</a>
+                </div>
             </div>
         </div>
     </header>
-
 
     <form id="booking-form" method="POST">
         {% csrf_token %}
@@ -113,8 +120,6 @@
     <script src="{% static 'rentals/js/bookings.js' %}"></script>
     <script src="{% static 'rentals/js/scripts.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-
 
 
     <!--Footer-->

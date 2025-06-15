@@ -28,33 +28,36 @@
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
 -->
-
 <body>
+    <!--Logo, Header & Menu-->
+    <header>
+        <div class="header-menu-container">
+            <div class="logo-container">
+                <a href="{% url 'homepage' %}">
+                    <img src="{% static 'rentals/images/BrowneTransports.png' %}" alt="Browne Transports Logo" class="header-logo">
+                </a>
+            </div>
+            
+            <div class="header-content">
+                <h1>Welcome to Browne Transports & Rentals</h1>
+                <h2>Reasonable & Reliable, every time.</h2>
+                <p>Get the keys to your next adventure!</p>
+            </div>
 
-
-   <!-- Header & Menu Combined -->
-<header class="header-menu-container">
-    <!-- Header Content -->
-    <div class="header-content">
-        <h1>Browne Transports and Car Rentals</h1>
-        <h2>We have Reasonable and Reliable cars for every occasion.</h2>
-        <p>Come get the keys to your next adventure!</p>
-    </div>
-
-    <!-- Menu Button on the Right -->
-    <div class="menu">
-        <button class="menu-button">☰ Menu</button>
-        <div class="dropdown">
-            <a href="{% url 'homepage' %}">Home</a>
-            <a href="{% url 'fleet' %}">Our Fleet</a>
-            <a href="{% url 'menubookings' %}">Reservations</a>
-            <a href="{% url 'terms' %}">Terms and Conditions</a>
-            <a href="{% url 'contact' %}">Contact & Socials</a>
-            <a href="{% url 'about' %}">About Us</a>
-            <a href="{% url 'faq' %}">FAQ</a>
+            <div class="menu">
+                <button class="menu-button">☰ Menu</button>
+                <div class="dropdown">
+                    <a href="{% url 'homepage' %}">Home</a>
+                    <a href="{% url 'fleet' %}">Our Fleet</a>
+                    <a href="{% url 'menubookings' %}">Reservations</a>
+                    <a href="{% url 'terms' %}">Terms and Conditions</a>
+                    <a href="{% url 'contact' %}">Contact & Socials</a>
+                    <a href="{% url 'about' %}">About Us</a>
+                    <a href="{% url 'faq' %}">FAQ</a>
+                </div>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <section id="quick_search">
         <div class="search-container">
@@ -71,24 +74,19 @@
         </div>
     </section>
     
-    
- 
     <!--Preview of Cars (avaialble/most popular)-->
-    
     <section id="cars">
         <div id="cars-container">
             <h3>Take A Look at Our Fleet</h3>
             <div id="cars-pre" class="grid-container">
                 {% for car in cars %}
                 <!--home.js handles the code from here-->
-                
                 </div>
                 {% empty %}
                 <p>No cars found.</p>
                 {% endfor %}
             </div>
-    
-            <!-- Show More Button -->
+
             <div class="show-more-btn">
                 <a href="{% url 'fleet' %}" class="btn">Show More</a>
             </div>
@@ -113,8 +111,6 @@
         </div>
     </section>
     
-
-
       <!--Reviews(4-5 Stars)-->
       <section id="customer-reviews">
         <div class="reviews-container">
@@ -143,7 +139,6 @@
         </div>
     </section>
     
-    
 
     <!--Quick Contact Info-->
     <section id="contact-us">
@@ -152,13 +147,13 @@
             <p>Have questions or need assistance? We're here to help!</p>
             
             <div class="contact-info">
-                <p><strong>📍 Address:</strong> 123 Main Street, Bridgetown, Barbados</p>
-                <p><strong>📞 Phone:</strong> +1 (246) 123-4567</p>
-                <p><strong>📧 Email:</strong> support@brownerentals.com</p>
+                <p><strong>📍 Address:</strong> Burke's Road Brittons Hill, St. Michael, Bridgetown Barbados</p>
+                <p><strong>📞 Phone:</strong> +1 (246) 248-2202</p>
+                <p><strong>📧 Email:</strong> bt-rentals246@hotmail.com</p>
                 <p><strong>⏰ Working Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</p>
             </div>
 
-            <a href="mailto:support@brownerentals.com" class="contact-btn">Email Us</a>
+            <a href="mailto:bt-rentals246@hotmail.com" class="contact-btn">Email Us</a>
         </div>
     </section>
 

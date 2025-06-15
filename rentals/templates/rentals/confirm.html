@@ -15,25 +15,32 @@
 
 
 <body>
-    <!-- Header & Menu Combined -->
-    <header class="header-menu-container">
-        <!-- Header Content -->
-        <div class="header-content">
-            <h1>Browne Transports and Car Rentals</h1>
-            <h2>Reservations Summary</h2>
-        </div>
+    <!--Logo, Header & Menu-->
+    <header>
+        <div class="header-menu-container">
+            <div class="logo-container">
+                <a href="{% url 'homepage' %}">
+                    <img src="{% static 'rentals/images/BrowneTransports.png' %}" alt="Browne Transports Logo" class="header-logo">
+                </a>
+            </div>
+            
+            <div class="header-content">
+                <h1>Browne Transports & Rentals</h1>
+                <h2>Reservations Summary</h2>
+               
+            </div>
 
-        <!-- Menu Button on the Right -->
-        <div class="menu">
-            <button class="menu-button">☰ Menu</button>
-            <div class="dropdown">
-                <a href="{% url 'homepage' %}">Home</a>
-                <a href="{% url 'fleet' %}">Our Fleet</a>
-                <a href="{% url 'menubookings' %}">Reservations</a>
-                <a href="{% url 'terms' %}">Terms and Conditions</a>
-                <a href="{% url 'contact' %}">Contact & Socials</a>
-                <a href="{% url 'about' %}">About Us</a>
-                <a href="{% url 'faq' %}">FAQ</a>
+            <div class="menu">
+                <button class="menu-button">☰ Menu</button>
+                <div class="dropdown">
+                    <a href="{% url 'homepage' %}">Home</a>
+                    <a href="{% url 'fleet' %}">Our Fleet</a>
+                    <a href="{% url 'menubookings' %}">Reservations</a>
+                    <a href="{% url 'terms' %}">Terms and Conditions</a>
+                    <a href="{% url 'contact' %}">Contact & Socials</a>
+                    <a href="{% url 'about' %}">About Us</a>
+                    <a href="{% url 'faq' %}">FAQ</a>
+                </div>
             </div>
         </div>
     </header>
@@ -75,7 +82,6 @@
             </div>
 
             <!-- Disclaimer Agreement Section -->
-            
             <form action="{% url 'confirm' %}" method="POST">
                 {% csrf_token %}
 

@@ -1,5 +1,16 @@
 from django import forms
+from cloudinary.forms import CloudinaryFileField
+from .models import Cars
 from .models import Customers, Bookings, Additions
+
+#THis form is for admin image uploads via cloudinary
+class CarsForm(forms.ModelForm):
+    car_photo = CloudinaryFileField(options={'folder': 'bt-cars'})
+
+    class Meta:
+        model = Cars
+        fields = '__all__'
+        
 
 class customerform (forms.ModelForm):
     class Meta:

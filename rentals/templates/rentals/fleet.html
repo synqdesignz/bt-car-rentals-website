@@ -30,48 +30,42 @@
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
 -->
 <body>
-    <!-- Header & Menu Combined -->
-<header class="header-menu-container">
-    <!-- Header Content -->
-    <div class="header-content">
-        <h1>Take a look at our fleet.</h1>
-        <h2>We have Reasonable & Reliable vehicles for every occasion or any size family.</h2>
-        <p>Come get the keys to your next adventure!</p>
-    </div>
+    <header>
+        <div class="header-menu-container">
+            <div class="logo-container">
+                <a href="{% url 'homepage' %}">
+                    <img src="{% static 'rentals/images/BrowneTransports.png' %}" alt="Browne Transports Logo" class="header-logo">
+                </a>
+            </div>
+            
+            <div class="header-content">
+                <h1>Browne Transports & Rentals</h1>
+                <h2>Reasonable & Reliable, every time.</h2>
+                <p>For every occasion and any family size.</p>
+            </div>
 
-    <!-- Menu Button on the Right -->
-    <div class="menu">
-        <button class="menu-button">☰ Menu</button>
-        <div class="dropdown">
-            <a href="{% url 'homepage' %}">Home</a>
-            <a href="{% url 'fleet' %}">Our Fleet</a>
-            <a href="{% url 'menubookings' %}">Reservations</a>
-            <a href="{% url 'terms' %}">Terms and Conditions</a>
-            <a href="{% url 'contact' %}">Contact & Socials</a>
-            <a href="{% url 'about' %}">About Us</a>
-            <a href="{% url 'faq' %}">FAQ</a>
+            <div class="menu">
+                <button class="menu-button">☰ Menu</button>
+                <div class="dropdown">
+                    <a href="{% url 'homepage' %}">Home</a>
+                    <a href="{% url 'fleet' %}">Our Fleet</a>
+                    <a href="{% url 'menubookings' %}">Reservations</a>
+                    <a href="{% url 'terms' %}">Terms and Conditions</a>
+                    <a href="{% url 'contact' %}">Contact & Socials</a>
+                    <a href="{% url 'about' %}">About Us</a>
+                    <a href="{% url 'faq' %}">FAQ</a>
+                </div>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<!--Display all cars with max (8 per page) with filters to change and cars have availability status-->
-<!-- Cars and clicks for price -->
-<body>
+
+    <!--Display all cars with max (8 per page) with filters to change and cars have availability status-->
+    <!-- Cars and clicks for price -->
     {% csrf_token %}
     <section id="cars">
         <div id="fleet-container">
-            <div id="cars-list" class="grid-container">
-             
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <span id="page-info">Page 1</span>
-                <div class="page-buttons">
-                    <button id="prev-btn">← Previous</button>
-                    <button id="next-btn">Next →</button>
-                </div>
-            </div>
+            <div id="cars-list" class="grid-container"></div>
         </div>
     </section>
 </body>
@@ -83,7 +77,5 @@
     <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
     <br>
 </footer>
-
-</body>
 
 </html>

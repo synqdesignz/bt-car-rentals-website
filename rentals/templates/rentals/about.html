@@ -8,60 +8,67 @@
     <title>BT Rentals</title>
     <link rel="icon" type="image/png" href="{% static 'rentals/images/bt.png' %}">
     <link rel ="stylesheet" href="{% static 'rentals/css/style.css' %}">
+    <link rel ="stylesheet" href="{% static 'rentals/css/about&contact.css' %}">
     <script src="{% static 'rentals/js/scripts.js' %}"></script>
 
 </head>
 
-
 <body>
-    <!-- Header & Menu Combined -->
-    <header class="header-menu-container">
-    <!-- Header Content -->
-        <div class="header-content">
-            <h1>Browne Transports and Car Rentals</h1>
-            <h2>We have Reasonable and Reliable cars for every occasion.</h2>
-            <p>Get the keys to your next adventure!</p>
-        </div>
+    <!--Logo, Header & Menu-->
+    <header>
+        <div class="header-menu-container">
+            <div class="logo-container">
+                <a href="{% url 'homepage' %}">
+                    <img src="{% static 'rentals/images/BrowneTransports.png' %}" alt="Browne Transports Logo" class="header-logo">
+                </a>
+            </div>
+            
+            <div class="header-content">
+                <h1>Browne Transports & Rentals</h1>
+                <h2>We have Reasonable and Reliable cars for every occasion.</h2>
+                <p>Get the keys to your next adventure!</p>
+            </div>
 
-        <!-- Menu Button on the Right -->
-        <div class="menu">
-            <button class="menu-button">☰ Menu</button>
-            <div class="dropdown">
-                <a href="{% url 'homepage' %}">Home</a>
-                <a href="{% url 'fleet' %}">Our Fleet</a>
-                <a href="{% url 'menubookings' %}">Reservations</a>
-                <a href="{% url 'terms' %}">Terms and Conditions</a>
-                <a href="{% url 'contact' %}">Contact & Socials</a>
-                <a href="{% url 'about' %}">About Us</a>
-                <a href="{% url 'faq' %}">FAQ</a>
+            <div class="menu">
+                <button class="menu-button">☰ Menu</button>
+                <div class="dropdown">
+                    <a href="{% url 'homepage' %}">Home</a>
+                    <a href="{% url 'fleet' %}">Our Fleet</a>
+                    <a href="{% url 'menubookings' %}">Reservations</a>
+                    <a href="{% url 'terms' %}">Terms and Conditions</a>
+                    <a href="{% url 'contact' %}">Contact & Socials</a>
+                    <a href="{% url 'about' %}">About Us</a>
+                    <a href="{% url 'faq' %}">FAQ</a>
+                </div>
             </div>
         </div>
-</header>
-</body>
+    </header>
 
 
 
-<!--About Us.-->
-<section id="about-us">
-    <div class="about-container">
-        <h2>About Browne Transports & Rentals</h2>
-        <p>
-            Welcome to Browne Transports & Rentals! We provide **reliable and affordable** rental vehicles for all occasions. 
-            Whether you're looking for a smooth ride for your daily commute, a luxury car for a special event, or a spacious SUV for a family trip, 
-            we've got you covered. Our fleet is **well-maintained, insured, and ready for the road**.
-        </p>
-        <p>
-            We pride ourselves on **exceptional customer service, transparent pricing, and flexible booking options**. Your journey starts with us!
-            Book now and drive with confidence.  
-        </p>
-        <a href="{% url 'fleet' %}" class="learn-more-btn">Explore Our Fleet</a>
-    </div>
-</section>
 
-<!--Footer-->
-<footer>
-    <br>
-    <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
-    <br>
-</footer>
+    <!--About Us.-->
+    <section id="about-us">
+        <div class="about-container">
+            <h2>About Browne Transports & Rentals</h2>
+            <p>
+                Welcome to Browne Transports & Rentals! We provide Reasonable and Reliable rental vehicles for all occasions. 
+                Whether you're looking for a smooth ride for your daily commute, a luxury car for a special event, or a spacious SUV for a family trip, 
+                we've got you covered. Our fleet is well-maintained, insured, and ready for the road.
+            </p>
+            <p>
+                We pride ourselves on exceptional customer service, transparent pricing, and flexible booking options. Your journey starts with us!
+                Book now and drive with confidence.  
+            </p>
+            <a href="{% url 'fleet' %}" class="learn-more-btn">Explore Our Fleet</a>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+        <br>
+        <p>&copy; 2021 Browne Transports & Rentals. All rights reserved.</p>
+        <br>
+    </footer>
+    </body>
 </html>

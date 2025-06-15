@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Cars Module
 class Cars(models.Model):
@@ -16,7 +17,7 @@ class Cars(models.Model):
     year = models.IntegerField()
     price_day = models.DecimalField(max_digits=10, decimal_places=2)
     car_status = models.CharField(max_length=11)
-    car_photo = models.ImageField(upload_to='car_photos/', blank=True, null=True)
+    car_photo = CloudinaryField('car_photo', blank=True, null=True)
 
     class Meta:
         db_table = 'cars'

@@ -10,7 +10,7 @@
     margin: auto;
     padding: 20px;
     background-color: #ffffff;
-    border: 3px solid #ff0000; /* Red border */
+    border: 3px solid #b30000; 
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
@@ -19,7 +19,7 @@
 /* Headings */
 .faq-container h2 {
     font-size: 24px;
-    color: #ff0000;
+    color: #b30000;
     text-align: center;
     margin-bottom: 15px;
 }

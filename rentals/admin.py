@@ -4,10 +4,12 @@ from django.contrib import admin
 
 # Car Management
 from django.contrib import admin
+from .forms import CarsForm
 from .models import Cars, Customers, Bookings, Additions
 
 @admin.register(Cars)
 class CarsAdmin(admin.ModelAdmin):
+    form = CarsForm
     list_display = ('reg_no', 'make', 'model', 'year', 'price_day', 'car_status', 'car_photo')
     search_fields = ('reg_no', 'make', 'model', 'year')
     list_filter = ('car_status',)
