@@ -127,7 +127,6 @@ def homepage_cars(request):
                     "make": car.make,
                     "model": car.model,
                     "year": car.year,
-                    # Ensure JSON serializable
                     "price_day": float(car.price_day),
                     "car_status": car.car_status,
                     "car_photo": request.build_absolute_uri(car.car_photo.url) if car.car_photo else None,

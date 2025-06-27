@@ -103,6 +103,10 @@ body {
 .menu:hover .dropdown {
   display: flex;
 }
+.menu.active .dropdown {
+  display: flex;
+}
+
 
 
 

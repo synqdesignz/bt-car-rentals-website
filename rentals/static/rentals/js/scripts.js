@@ -1,13 +1,11 @@
-
-
-
 //Menu
 document.addEventListener("DOMContentLoaded", function() {
     const menuButton = document.querySelector(".menu-button");
     const dropdown = document.querySelector(".dropdown");
 
-    menuButton.addEventListener("click", function() {
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    menuButton.addEventListener("click", function(e) {
+        e.stopPropagation();
+        menuButton.classList.toggle('active');
     });
 
     // Close dropdown if user clicks outside
