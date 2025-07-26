@@ -33,7 +33,7 @@ DEFAULT_FROM_EMAIL = "onboarding@resend.dev"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "bt-car-rentals.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "bt-car-rentals.onrender.com", "btcarrentals.com", "www.btcarrentals.com"]
 
 
 
