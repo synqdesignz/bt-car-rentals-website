@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'btrentals.wsgi.application'
 load_dotenv()
 
 
-#prod settings
+#render settings
 ca_cert_path = None
 base64_cert = os.getenv("MYSQL_SSL_CA_BASE64")
 if base64_cert:
@@ -106,7 +106,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
         'PORT': os.getenv('DB_PORT', '4000'),
         'OPTIONS':  db_options,
         }
