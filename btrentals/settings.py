@@ -25,7 +25,7 @@ load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 RESEND_API_KEY = os.getenv('RESEND_API_KEY')
-DEFAULT_FROM_EMAIL = "onboarding@resend.dev"
+DEFAULT_FROM_EMAIL = "btcarrentals@scanafy.com"
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -33,7 +33,7 @@ DEFAULT_FROM_EMAIL = "onboarding@resend.dev"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "bt-car-rentals.onrender.com", "btcarrentals.com", "www.btcarrentals.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "btcarrentals.com", "www.btcarrentals.com"]
 
 
 
