@@ -270,6 +270,7 @@ def confirm(request):
 #Email Information
 def send_booking_email(customer, car, additions, total_price):
     admin_email = settings.DEFAULT_FROM_EMAIL
+    owner_email = settings.SITE_OWNER_EMAIL
     user_email = customer.email
     
     # User confirmation email
@@ -293,9 +294,9 @@ def send_booking_email(customer, car, additions, total_price):
 
     send_email(user_subject, user_message, admin_email, [user_email])
 
-    # Admin notification email
-    admin_subject = "New Car Rental Booking Received"
-    admin_message = f"""
+    # Owner notification email
+    owner_subject = "New Car Rental Booking Received"
+    owner_message = f"""
     A new booking has been made.
 
     Customer: {customer.first_name} {customer.last_name}
@@ -315,7 +316,7 @@ def send_booking_email(customer, car, additions, total_price):
     BT Car Rentals
     """
 
-    send_email(admin_subject, admin_message, admin_email, [admin_email])
+    send_email(owner_subject, owner_message, admin_email, [owner_email])
 
 #Email Settings
 def send_email(subject, message, sender_email, recipient_list):

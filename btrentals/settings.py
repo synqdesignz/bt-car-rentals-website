@@ -26,6 +26,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 RESEND_API_KEY = os.getenv('RESEND_API_KEY')
 DEFAULT_FROM_EMAIL = "btcarrentals@scanafy.com"
+SITE_OWNER_EMAIL = "btransports246@gmail.com"
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
