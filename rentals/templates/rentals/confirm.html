@@ -53,7 +53,7 @@
             <div class="payment-section">
                 <h3>Car Information:</h3>
                 <p><strong>Car Model:</strong> {{ car.model }}</p>
-                <p><strong>Price per day:</strong> ${{ car.price_day }}</p>
+                <p><strong>Price per day:</strong> ${{ price_per_day|floatformat:2 }}</p>
             </div>
 
             <div class="payment-section">

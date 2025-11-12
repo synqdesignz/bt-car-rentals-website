@@ -111,10 +111,7 @@ class Bookings(models.Model):
         return f"Booking #{self.id} - {self.car} ({self.start_da} → {self.end_da})"
 
 
-
-# ===========================
 # Seasonal Pricing System
-# ===========================
 class Season(models.Model):
     SEASON_CHOICES = [
         ('summer', 'Summer'),
@@ -165,9 +162,67 @@ class CarSeasonPrice(models.Model):
         return f"{self.car.make} {self.car.model} - {self.season.get_name_display()}"
 
 
-    
-      
-    
+
+# Car Specs Scheme
+class CarSpecs(models.Model):
+    car = models.OneToOneField('Cars', on_delete=models.CASCADE, related_name='specs')
+
+    # Directly store car type instead of FK
+    car_type = models.CharField(
+        max_length=20,
+        choices=[
+            ('Sedan', 'Sedan'),
+            ('Small Car', 'Small Car'),
+            ('Jeep', 'Jeep'),
+            ('SUV', 'SUV'),
+            ('Truck', 'Truck'),
+            ('Van', 'Van'),
+            ('Other', 'Other'),
+        ],
+        default='Sedan'
+    )
+
+    special_type = models.CharField(
+        max_length=20,
+        choices=[
+            ('Gas', 'Gas'),
+            ('Diesel', 'Diesel'),
+            ('Hybrid', 'Hybrid'),
+            ('Electric', 'Electric'),
+        ],
+        default='Gas'
+    )
+
+    passengers = models.PositiveSmallIntegerField(default=4)
+    doors = models.PositiveSmallIntegerField(default=4)
+    luggage_capacity = models.CharField(max_length=50, help_text="e.g. '2 suitcases'")
+    transmission = models.CharField(
+        max_length=20,
+        choices=[
+            ('Automatic', 'Automatic'),
+            ('Manual', 'Manual'),
+        ],
+        default='Automatic'
+    )
+
+    def __str__(self):
+        return f"{self.car.make} {self.car.model} Specs"
+
+
+
+class CarFeature(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class CarFeatureAssignment(models.Model):
+    car = models.ForeignKey('Cars', on_delete=models.CASCADE, related_name='car_features')
+    feature = models.ForeignKey('CarFeature', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.car.make} {self.car.model} - {self.feature.name}"
 
     
 

@@ -201,6 +201,7 @@ def booking(request, car_id):
             "pickup_location": pickup_location,
             "selected_additions": selected_additions,
             "total_price": total_price,
+            "price_per_day": request.POST.get("price_per_day"),
         }
        
         # Redirect to the payments page
@@ -238,6 +239,7 @@ def confirm(request):
             })
             booking_data["customer_id"] = customer.id
             request.session["booking_data"] = booking_data
+
             
             booking = Bookings.objects.create(
                 car = car,
@@ -248,6 +250,7 @@ def confirm(request):
                 end_time = booking_data["end_time"],
                 pickup_loc = booking_data["pickup_location"],
                 total = total_price
+
             )
             
             #Associate selected add-ons with the booking
@@ -262,7 +265,7 @@ def confirm(request):
             send_booking_email(customer, car, additions, total_price)
             
             # Redirect to success page
-            return redirect('fleet')#change to tahank you page
+            return redirect('fleet')#change to thank you page
 
         else:
             # Redirect to an error page if terms were not agreed to
@@ -273,7 +276,8 @@ def confirm(request):
         "car": car,
         "customer": customer_data,
         "additions": additions,
-        "total_price": total_price
+        "total_price": total_price,
+        "price_per_day": booking_data.get("price_per_day"),
     })
 
 #Email Information
