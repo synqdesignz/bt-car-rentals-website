@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'btrentals.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv()
 
-'''
+
 #render settings
 ca_cert_path = None
 base64_cert = os.getenv("MYSQL_SSL_CA_BASE64")
@@ -130,6 +130,7 @@ DATABASES = {
         }
     }
 }
+'''
 
 
 CLOUDINARY_STORAGE = {
