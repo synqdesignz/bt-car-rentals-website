@@ -103,6 +103,7 @@ def fleet_list(request):
                 "price_day": float(car.price_day),
                 "car_status": car.car_status,
                 "car_photo": car.car_photo.url if car.car_photo else '',
+                "weekly_display_price": car.get_weekly_display_price(),
             }
             for car in cars
         ],
@@ -130,6 +131,7 @@ def homepage_cars(request):
                     "price_day": float(car.price_day),
                     "car_status": car.car_status,
                     "car_photo": request.build_absolute_uri(car.car_photo.url) if car.car_photo else None,
+                    "weekly_display_price": car.get_weekly_display_price(),
                 }
                 for car in cars
             ],
@@ -146,6 +148,16 @@ def homepage_cars(request):
 def booking(request, car_id):
     car = get_object_or_404(Cars, id=car_id)  # Get the car by its ID
     additions = Additions.objects.all()  # Fetch all add-ons
+
+    day_tiers = [2, 4, 6, 7]
+    tier_prices = {}
+
+    for days in day_tiers:
+        check_date = datetime.today().date()
+        tier_prices_key = f"{days}" if days < 7 else "7_plus"
+        tier_prices[tier_prices_key] = car.get_daily_price(rental_days=days, check_date=check_date)
+
+        
 
     if request.method == "POST":
         #Hold customer info in a session
@@ -166,22 +178,19 @@ def booking(request, car_id):
         # Calculate rental days
         pickup_date_obj = datetime.strptime(pickup_date, "%Y-%m-%d").date()
         dropoff_date_obj = datetime.strptime(dropoff_date, "%Y-%m-%d").date()
-        day_difference = (dropoff_date_obj - pickup_date_obj).days
+        rental_days = (dropoff_date_obj - pickup_date_obj).days + 1
 
         # Get car details
-        base_price = day_difference * car.price_day
+        daily_price = car.get_daily_price(rental_days=rental_days, check_date=pickup_date_obj)
 
         # Calculate add-on price
         add_on_total = 0
         selected_additions_objects = Additions.objects.filter(id__in=selected_additions)
         for addition in selected_additions_objects:
-            add_on_total += addition.price * day_difference
+            add_on_total += addition.price * rental_days
 
-        total_price = float(base_price + add_on_total)
-        print("Selected Additions (IDs):", selected_additions)
-        print("Selected Additions Objects:", selected_additions_objects)
-        
-        
+        total_price = float(daily_price * rental_days + add_on_total)
+
         request.session["booking_data"] = {
             "car_id": car.id,
             "customer_id": 0,
@@ -197,7 +206,7 @@ def booking(request, car_id):
         # Redirect to the payments page
         return redirect(f"/confirm/")
 
-    return render(request, "rentals/bookings.html", {"car": car, "additions": additions})
+    return render(request, "rentals/bookings.html", {"car": car, "additions": additions, "tier_prices": tier_prices})
 
 #Confirmation and call email functions
 def confirm(request):

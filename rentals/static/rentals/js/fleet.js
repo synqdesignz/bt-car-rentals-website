@@ -34,9 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 container.innerHTML += `
                     <div class="car-card">
                         <img src="${carImage}" alt="${car.make}">
-                        <h3>${car.make} ${car.model} (${car.year})</h3>
-                        <p>Status: ${car.car_status}</p>
-                        <p>Price per day: $${car.price_day}</p>
+                        <h3>${car.make} ${car.model}</h3>
+                        <p>As low as $${car.weekly_display_price} USD</p>
                         <a href="/booking/${car.id}" class="book-now-button">Book Now</a>
                     </div>
                 `;

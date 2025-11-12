@@ -5,7 +5,18 @@ from django.contrib import admin
 # Car Management
 from django.contrib import admin
 from .forms import CarsForm
-from .models import Cars, Customers, Bookings, Additions
+from .models import Cars, Customers, Bookings, Additions, Season, CarSeasonPrice, SeasonDateRange
+
+
+# --- Inline setup for conditional prices ---
+class CarSeasonPriceInline(admin.TabularInline):
+    model = CarSeasonPrice
+    extra = 0
+
+class SeasonDateRangeInline(admin.TabularInline):
+    model = SeasonDateRange
+    extra = 1
+
 
 @admin.register(Cars)
 class CarsAdmin(admin.ModelAdmin):
@@ -13,6 +24,7 @@ class CarsAdmin(admin.ModelAdmin):
     list_display = ('reg_no', 'make', 'model', 'year', 'price_day', 'car_status', 'car_photo')
     search_fields = ('reg_no', 'make', 'model', 'year')
     list_filter = ('car_status',)
+    inlines = [CarSeasonPriceInline]
 
 
 @admin.register(Customers)
@@ -34,3 +46,10 @@ class AdditionsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price')
     search_fields = ('name',)
     ordering = ('id',)
+
+# --- Seasons ---
+@admin.register(Season)
+class SeasonAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    inlines = [SeasonDateRangeInline]
+    

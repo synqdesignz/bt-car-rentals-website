@@ -30,6 +30,7 @@
 -->
 
 
+
 <body>
     <!-- Header & Menu Combined -->
     <header>
@@ -82,7 +83,14 @@
             <img src="{% static 'rentals/images/default.png' %}" alt="Default Image" class="car-image">
             {% endif %}
 
-            <p><strong>Price per day:</strong> $<span id="price-per-day">{{ car.price_day }}</span></p>
+            <p><strong>Price Per Day:</strong> $
+                <span id="price-per-day"
+                    data-price_1_2="{{ tier_prices.2 }}"
+                    data-price_3_4="{{ tier_prices.4 }}"
+                    data-price_5_6="{{ tier_prices.6 }}"
+                    data-price_7_plus="{{ tier_prices.7_plus }}">
+                    {{ tier_prices.2 }}
+                </span></p>
             <p><strong>Car Status:</strong> {{ car.car_status }}</p>
         </div>
 
